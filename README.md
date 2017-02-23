@@ -3,15 +3,15 @@
 ## Laravel shopping cart sample application
 
 An application for learning purposes, Small E-commerce(shopping cart) application using the Laravel framework, which has the following abilities:
-- Admin:
-a) Ability to create, delete, edit a product
-b) Ability to create, delete, edit a user
-c) Sign-up & login to the app
+* Admin:
+    * Ability to create, delete, edit a product
+    * Ability to create, delete, edit a user
+    * Sign-up & login to the app
 
-- End user:
-a) Ability to add products to a shopping cart
-b) Ability to view a cart and manage it (add more products, remove existing)
-c) Sign-up & login to the app
+* End user:
+    * Ability to add products to a shopping cart
+    * Ability to view a cart and manage it (add more products, remove existing)
+    * Sign-up & login to the app
 
 - Bootstrap is used to build end user interface and powered that through backend API(using javascript/jquery)
 
@@ -23,51 +23,23 @@ c) Sign-up & login to the app
 - Bootstrap to build frontend UI
 - Javascript/Jquery for event handling
 
-## Available routes
+## How to run it
 
-➜  laravel-test php artisan route:list
-+--------+-----------+----------------------------+------------------+------------------------------------------------------------------------+------------+
-| Domain | Method    | URI                        | Name             | Action                                                                 | Middleware |
-+--------+-----------+----------------------------+------------------+------------------------------------------------------------------------+------------+
-|        | GET|HEAD  | /                          |                  | App\Http\Controllers\Frontend\HomeController@index                     | web        |
-|        | GET|HEAD  | admin                      |                  | App\Http\Controllers\Admin\LandingController@index                     | web        |
-|        | GET|HEAD  | admin/products/add         |                  | App\Http\Controllers\Admin\LandingController@product_add               | web        |
-|        | GET|HEAD  | admin/products/view        |                  | App\Http\Controllers\Admin\LandingController@product_list              | web        |
-|        | GET|HEAD  | admin/users/add            |                  | App\Http\Controllers\Admin\LandingController@user_add                  | web        |
-|        | GET|HEAD  | admin/users/view           |                  | App\Http\Controllers\Admin\LandingController@user_list                 | web        |
-|        | GET|HEAD  | api/login                  | login            | App\Http\Controllers\Auth\LoginController@showLoginForm                | api,guest  |
-|        | POST      | api/login                  |                  | App\Http\Controllers\Auth\LoginController@login                        | api,guest  |
-|        | POST      | api/logout                 | logout           | App\Http\Controllers\Auth\LoginController@logout                       | api        |
-|        | POST      | api/password/email         | password.email   | App\Http\Controllers\Auth\ForgotPasswordController@sendResetLinkEmail  | api,guest  |
-|        | GET|HEAD  | api/password/reset         | password.request | App\Http\Controllers\Auth\ForgotPasswordController@showLinkRequestForm | api,guest  |
-|        | POST      | api/password/reset         |                  | App\Http\Controllers\Auth\ResetPasswordController@reset                | api,guest  |
-|        | GET|HEAD  | api/password/reset/{token} | password.reset   | App\Http\Controllers\Auth\ResetPasswordController@showResetForm        | api,guest  |
-|        | POST      | api/register               |                  | App\Http\Controllers\Auth\RegisterController@register                  | api,guest  |
-|        | GET|HEAD  | api/register               | register         | App\Http\Controllers\Auth\RegisterController@showRegistrationForm      | api,guest  |
-|        | GET|HEAD  | api/v1/cart                | cart.index       | App\Http\Controllers\Api\CartController@index                          | api        |
-|        | POST      | api/v1/cart                | cart.store       | App\Http\Controllers\Api\CartController@store                          | api        |
-|        | GET|HEAD  | api/v1/cart/create         | cart.create      | App\Http\Controllers\Api\CartController@create                         | api        |
-|        | DELETE    | api/v1/cart/{cart}         | cart.destroy     | App\Http\Controllers\Api\CartController@destroy                        | api        |
-|        | PUT|PATCH | api/v1/cart/{cart}         | cart.update      | App\Http\Controllers\Api\CartController@update                         | api        |
-|        | GET|HEAD  | api/v1/cart/{cart}         | cart.show        | App\Http\Controllers\Api\CartController@show                           | api        |
-|        | GET|HEAD  | api/v1/cart/{cart}/edit    | cart.edit        | App\Http\Controllers\Api\CartController@edit                           | api        |
-|        | GET|HEAD  | api/v1/products            |                  | App\Http\Controllers\Api\ProductController@index                       | api        |
-|        | GET|HEAD  | api/v1/products/{id?}      |                  | App\Http\Controllers\Api\ProductController@show                        | api        |
-|        | POST      | api/v1/users               |                  | App\Http\Controllers\Api\UserController@store                          | api        |
-|        | GET|HEAD  | cart/checkout              |                  | App\Http\Controllers\Frontend\ProductController@checkout               | web        |
-|        | GET|HEAD  | cart/products              |                  | App\Http\Controllers\Frontend\ProductController@cart                   | web        |
-|        | GET|HEAD  | home                       |                  | App\Http\Controllers\Frontend\HomeController@index                     | web        |
-|        | POST      | login                      |                  | App\Http\Controllers\Auth\LoginController@login                        | web,guest  |
-|        | GET|HEAD  | login                      | login            | App\Http\Controllers\Auth\LoginController@showLoginForm                | web,guest  |
-|        | POST      | logout                     | logout           | App\Http\Controllers\Auth\LoginController@logout                       | web        |
-|        | POST      | password/email             | password.email   | App\Http\Controllers\Auth\ForgotPasswordController@sendResetLinkEmail  | web,guest  |
-|        | GET|HEAD  | password/reset             | password.request | App\Http\Controllers\Auth\ForgotPasswordController@showLinkRequestForm | web,guest  |
-|        | POST      | password/reset             |                  | App\Http\Controllers\Auth\ResetPasswordController@reset                | web,guest  |
-|        | GET|HEAD  | password/reset/{token}     | password.reset   | App\Http\Controllers\Auth\ResetPasswordController@showResetForm        | web,guest  |
-|        | GET|HEAD  | products/{id}-{any}        |                  | App\Http\Controllers\Frontend\ProductController@details                | web        |
-|        | POST      | register                   |                  | App\Http\Controllers\Auth\RegisterController@register                  | web,guest  |
-|        | GET|HEAD  | register                   | register         | App\Http\Controllers\Auth\RegisterController@showRegistrationForm      | web,guest  |
-+--------+-----------+----------------------------+------------------+------------------------------------------------------------------------+------------+
+- CLone the repo
+- Create virtual host like(laravel-sample-app.com) and point the URL to `public` folder
+- Make sure you have already created mysql database `laravel` or whatever you want set that into `config\database.php`
+- Run the `php artisan migrate` this will create required table
+
+## More info
+
+Below are the api endpoints available, they support GET, POST, PUT, DELETE
+- /api/v1/users
+- /api/v1/products
+- /api/v1/cart
+
+For full list of available path(web/api) run this command from root directory `php artisan route:list`
+
+Token based authentication is used to authenticate user in api, Ref: https://gist.github.com/JacobBennett/090369fbab0b31130b51
 
 ## Todo
 
